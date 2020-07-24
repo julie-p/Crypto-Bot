@@ -4,17 +4,23 @@ import List from './Pages/List';
 import Chart from './Pages/Chart';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import data from './reducers/data.reducer';
+import {Provider} from 'react-redux';
+import {createStore, combineReducers} from 'redux';
+
+const store = createStore(combineReducers({data}));
+
 function App() {
 
   return (
-
-    <Router>
-      <Switch>
-        <Route path='/' exact component={List}/>
-        <Route path='/chart' component={Chart}/>
-      </Switch>
-    </Router>
-
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route path='/' exact component={List}/>
+          <Route path='/chart' component={Chart}/>
+        </Switch>
+      </Router>
+    </Provider>
   )
 };
 

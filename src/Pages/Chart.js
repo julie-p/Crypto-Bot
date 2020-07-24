@@ -3,20 +3,24 @@ import Nav from '../Components/Nav';
 import Footer from '../Components/Footer';
 import { Pie } from 'react-chartjs-2';
 
-function Chart() {
+import { connect } from 'react-redux';
 
+function Chart(props) {
+    
     const today = new Date();
     const date = today.toLocaleDateString("en-EN");
     const time = today.toLocaleTimeString("en-EN");
 
     const [ chartData, setChartData ] = useState({});
 
+    let data = Object.values(props.data);
+
     const chart = () => {
         setChartData({
             labels: ["Bitcoin", "Ethereum", "Dash", "BAT", 'USD Coin'],
             datasets: [
                 {
-                    data: [75.34, 17.62, 1.29, 1.19, 1.04],
+                    data: data,
                     backgroundColor: [
                         '#F1642B',
                         '#ffce82',
@@ -61,4 +65,13 @@ function Chart() {
     )
 };
 
-export default Chart;
+function mapStateToProps(state) {
+    return {
+        data: state.data
+    }
+};
+
+export default connect(
+    mapStateToProps,
+    null
+  )(Chart);

@@ -6,70 +6,72 @@ import Footer from '../Components/Footer';
 import { ListGroup, ListGroupItem, Spinner } from 'reactstrap';
 import NumberFormat from 'react-number-format';
 
-function List() {
+import { connect } from 'react-redux';
+
+function List(props) {
 
     const today = new Date();
     const date = today.toLocaleDateString("en-EN");
     const time = today.toLocaleTimeString("en-EN");
-    
-    const [ rate, setRate ] = useState([]);
+
+    const [ rate, setRate ] = useState({});
     const [ loading, setLoading ] = useState(false);
-    
+
+    const [ convertedAmounts, setConvertedAmounts ] = useState({});
+    let [ totalConvertedAmount, setTotalConvertedAmount ] = useState(0);
+    const [ percentageAmounts, setPercentageAmounts ] = useState({});
+
+
     useEffect(() => {
         const loadData = async () => {
-            const apiData = await fetch('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,DASH,BAT,USDC&tsyms=EUR&api_key=0ea99a120eeb7ed913b4b514ab9a535a758670fec27d574ee306aa633c59420d');
+            //get rate data
+            const apiData = await fetch('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,DASH,BAT,USDC&tsyms=EUR&api_key=b200f3172f07713ebb556ca20eab4e5b0884d68bc2f89a8326077294489e4943');
             const apiResponse = await apiData.json();
-            setRate(apiResponse);
-            setLoading(true);
-        }
+            return await updateData(apiResponse);
+        };
+
+        const updateData = function(rate){
+            return new Promise(resolve => {
+                setRate(rate);
+                //calculate converted amount
+                data.assets.map((asset, key) => {
+                    if (typeof rate[asset.symbol] !== "undefined") {
+                        convertedAmounts[asset.symbol] = asset.amount * rate[asset.symbol]['EUR'];
+                    }
+                });
+                setConvertedAmounts(convertedAmounts);
+
+                //get total mount
+                totalConvertedAmount = Object.keys(convertedAmounts).reduce((sum, key) => sum + (convertedAmounts[key]), 0);
+                setTotalConvertedAmount(totalConvertedAmount);
+
+                //get percentage amount
+                Object.keys(convertedAmounts).map((key, index) => {
+                    percentageAmounts[key] = ((convertedAmounts[key] * 100) / totalConvertedAmount).toFixed(2);
+                });
+                setPercentageAmounts(percentageAmounts);
+                props.addData(percentageAmounts);
+
+                setLoading(true);
+            })
+        };
+
         loadData();
-        /* setInterval(loadData, 10000); */ 
+        setInterval(loadData, 10000);
     }, []);
 
-    let amountEach = {};
-    let totalWallet;
-
-    const convertedAmount = function(asset) {
-        let toReturn;
-        if (typeof rate[asset.symbol] !== "undefined") {
-            let useThisRate = rate[asset.symbol];
-            toReturn = asset.amount * useThisRate.EUR;
-            amountEach[asset.symbol] = toReturn;
-
-            return <span><NumberFormat value={toReturn} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} /></span>
-        }
-        return <span>Pas de taux disponible</span>
-    };
-
-    const totalAmount = function(amountEach) {
-        let total = Object.keys(amountEach).reduce((sum, key) => sum + (amountEach[key]), 0);
-        totalWallet = total;
-        return total;
-    };
-
-    const totalPercentage = function(asset, amountEach, totalWallet) {
-        console.log('----- ASSET', asset);
-      	console.log('----- AMOUNT EACH', amountEach);
-      	console.log('----- TOTAL WALLET', totalWallet);
-        if (typeof amountEach[asset.symbol] === 'undefined') {
-            let useThisAmount = amountEach[asset.symbol];
-            console.log('----- USE THIS AMOUNT', useThisAmount);
-            return Math.round((useThisAmount * 100) / totalWallet); 
-        }
-    };
-
     const wallet = data.assets.map((asset, key) => {
-        return <ListGroupItem style={{display: 'flex', justifyContent: 'space-between'}} className="list-group-item">
+        return <ListGroupItem key={"wallet_" + asset.symbol + "_" + key} style={{display: 'flex', justifyContent: 'space-between'}} className="list-group-item">
                     <img src={asset.img} className="logo-img" alt="Cryptocurrency logo"></img>
                     <p>{asset.name}</p>
-                    <p>{totalPercentage(asset, amountEach, totalWallet)} %</p>
+                    <p>{percentageAmounts[asset.symbol]}%</p>
                     <p>{asset.amount} {asset.symbol}</p>
-                    {convertedAmount(asset)}
-                </ListGroupItem> 
+                    <span><NumberFormat value={convertedAmounts[asset.symbol]} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} /></span>
+                </ListGroupItem>
     });
 
     return(
-        
+
         <div className="App">
 
             <Nav />
@@ -82,18 +84,18 @@ function List() {
                 </div>
 
             </div>
-                
+
             <ListGroup style={{marginTop: '40px'}}>
                 <h4>Details</h4>
                 <div className="text-group">
                         <h3>Your Wallet</h3>
                         <p style={{paddingTop: '8px'}}>
-                            <NumberFormat value={totalAmount(amountEach)} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
+                            <NumberFormat value={totalConvertedAmount} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
                         </p>
                 </div>
-                { loading ? 
-                (wallet) 
-                : 
+                { loading ?
+                (wallet)
+                :
                 (
                 <div style={{margin: "0 auto"}}>
                     <Spinner type="grow" color="warning"/>
@@ -110,4 +112,15 @@ function List() {
     )
 };
 
-export default List;
+function mapDispatchToProps (dispatch) {
+    return {
+        addData: function(data) {
+            dispatch({type: 'addData', data: data})
+        }
+    }
+};
+
+export default connect(
+    null, 
+    mapDispatchToProps
+)(List);
