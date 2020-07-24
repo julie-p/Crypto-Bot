@@ -11,15 +11,6 @@ function Chart(props) {
     const [ customTime, setCustomTime ] = useState();
     const [ chartData, setChartData ] = useState({});
 
-    useEffect(() => {
-        const updateTime = function(){
-            setCustomDate(new Date().toLocaleDateString("en-EN"));
-            setCustomTime(new Date().toLocaleTimeString("en-EN"));
-        }
-        updateTime();
-        setInterval(updateTime, 1000);
-    }, []);
-
     let data = Object.values(props.data);
 
     const chart = () => {
@@ -38,11 +29,17 @@ function Chart(props) {
                     borderWidth: 1
                 }
             ]
-        });
-    }
+        })
+    };
 
     useEffect(() => {
         chart();
+        const updateTime = function(){
+            setCustomDate(new Date().toLocaleDateString("en-EN"));
+            setCustomTime(new Date().toLocaleTimeString("en-EN"));
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
     }, []);
 
     return(

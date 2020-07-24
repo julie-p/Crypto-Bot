@@ -86,7 +86,6 @@ function List(props) {
                     <button className="btn buy-btn">Buy Now</button>
                     <button className="btn sale-btn">Sell Now</button>
                 </div>
-
             </div>
 
             <ListGroup style={{marginTop: '40px'}}>
@@ -107,7 +106,6 @@ function List(props) {
                     <Spinner type="grow" color="warning"/>
                 </div>
                 )}
-
             </ListGroup>
 
             <Footer />
