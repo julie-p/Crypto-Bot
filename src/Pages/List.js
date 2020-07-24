@@ -10,17 +10,13 @@ import { connect } from 'react-redux';
 
 function List(props) {
 
-    const today = new Date();
-    const date = today.toLocaleDateString("en-EN");
-    const time = today.toLocaleTimeString("en-EN");
-
+    const [ customDate, setCustomDate ] = useState();
+    const [ customTime, setCustomTime ] = useState();
     const [ rate, setRate ] = useState({});
     const [ loading, setLoading ] = useState(false);
-
     const [ convertedAmounts, setConvertedAmounts ] = useState({});
-    let [ totalConvertedAmount, setTotalConvertedAmount ] = useState(0);
     const [ percentageAmounts, setPercentageAmounts ] = useState({});
-
+    let [ totalConvertedAmount, setTotalConvertedAmount ] = useState(0);
 
     useEffect(() => {
         const loadData = async () => {
@@ -54,10 +50,18 @@ function List(props) {
 
                 setLoading(true);
             })
-        };
+        }
+
+        const updateTime = function(){
+            setCustomDate(new Date().toLocaleDateString("en-EN"));
+            setCustomTime(new Date().toLocaleTimeString("en-EN"));
+        }
 
         loadData();
         setInterval(loadData, 10000);
+
+        updateTime();
+        setInterval(updateTime, 1000);
     }, []);
 
     const wallet = data.assets.map((asset, key) => {
@@ -77,7 +81,7 @@ function List(props) {
             <Nav />
 
             <div className="header">
-                <h4 className="date">{date}, {time}</h4>
+                <h4 className="date">{customDate}, {customTime}</h4>
                 <div className="button-group">
                     <button className="btn buy-btn">Buy Now</button>
                     <button className="btn sale-btn">Sell Now</button>

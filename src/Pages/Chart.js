@@ -7,11 +7,18 @@ import { connect } from 'react-redux';
 
 function Chart(props) {
     
-    const today = new Date();
-    const date = today.toLocaleDateString("en-EN");
-    const time = today.toLocaleTimeString("en-EN");
-
+    const [ customDate, setCustomDate ] = useState();
+    const [ customTime, setCustomTime ] = useState();
     const [ chartData, setChartData ] = useState({});
+
+    useEffect(() => {
+        const updateTime = function(){
+            setCustomDate(new Date().toLocaleDateString("en-EN"));
+            setCustomTime(new Date().toLocaleTimeString("en-EN"));
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    }, []);
 
     let data = Object.values(props.data);
 
@@ -44,7 +51,7 @@ function Chart(props) {
             <Nav />
 
             <div className="header header-chart">
-                <h4 className="date">{date}, {time}</h4>
+                <h4 className="date">{customDate}, {customTime}</h4>
                 <div className="button-group">
                     <button className="btn buy-btn">Buy Now</button>
                     <button className="btn sale-btn">Sell Now</button>
