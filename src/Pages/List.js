@@ -16,7 +16,7 @@ function List(props) {
     const [ loading, setLoading ] = useState(false);
     const [ convertedAmounts, setConvertedAmounts ] = useState({});
     const [ percentageAmounts, setPercentageAmounts ] = useState({});
-    let [ totalConvertedAmount, setTotalConvertedAmount ] = useState(0);
+    let   [ totalConvertedAmount, setTotalConvertedAmount ] = useState(0);
 
     useEffect(() => {
         const loadData = async () => {

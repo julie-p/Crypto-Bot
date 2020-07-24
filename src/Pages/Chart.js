@@ -56,7 +56,6 @@ function Chart(props) {
                     <button className="btn buy-btn">Buy Now</button>
                     <button className="btn sale-btn">Sell Now</button>
                 </div>
-
             </div>
 
             <div style={{marginTop: '40px', marginBottom: '40px'}}>
