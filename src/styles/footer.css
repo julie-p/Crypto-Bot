@@ -1,0 +1,25 @@
+/* Footer styles */
+.footer-menu {
+    margin-top: 30px;
+    border-top: 1px solid #ccc;
+  }
+  
+  .footer-link-col {
+    margin-top: 20px;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .footer-link {
+    color: #000;
+  }
+
+  .active-link {
+    color: #F1642B;
+  }
+  
+  .footer-icon:hover {
+    color: #F1642B;
+  }

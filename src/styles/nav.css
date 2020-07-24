@@ -1,0 +1,19 @@
+/* Nav styles */
+.nav-title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 10px;
+    font-size: 15px;
+  }
+  
+  .app-name {
+    font-weight: 300;
+  }
+  
+  .logo-icon {
+    margin-right: .7rem;
+    position: relative;
+    font-size: 20px;
+    color: #F1642B;
+  }
