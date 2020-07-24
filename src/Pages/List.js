@@ -26,49 +26,48 @@ function List() {
         /* setInterval(loadData, 10000); */ 
     }, []);
 
-    let amountEach = [];
-    let totalWallet = [];
+    let amountEach = {};
+    let totalWallet;
 
     const convertedAmount = function(asset) {
         let toReturn;
         if (typeof rate[asset.symbol] !== "undefined") {
             let useThisRate = rate[asset.symbol];
             toReturn = asset.amount * useThisRate.EUR;
-            amountEach.push(toReturn);
-        }
+            amountEach[asset.symbol] = toReturn;
 
-        if (typeof toReturn !== "undefined") {
             return <span><NumberFormat value={toReturn} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} /></span>
         }
+        return <span>Pas de taux disponible</span>
     };
 
-    const totalAmount = function(obj) {
-        let total = Object.keys(obj).reduce((sum, key) => sum + (obj[key]), 0);
-        totalWallet.push(total);
+   /*  console.log(amountEach) */
+
+    const totalAmount = function(amountEach) {
+        let total = Object.keys(amountEach).reduce((sum, key) => sum + (amountEach[key]), 0);
+        /* console.log(total) */
+        totalWallet = total;
         return total;
     };
 
-    const totalPercentage = function(amountEach, totalWallet) {
-        console.log(amountEach);
-      	console.log(typeof amountEach);
-      	console.log(totalWallet);
-        console.log(typeof totalWallet);
-      	console.log(Math.round((amountEach * 100) / totalWallet));
-        return Math.round((amountEach * 100) / totalWallet);
+    console.log(totalWallet)
+    const totalPercentage = function(asset) {
+        if (typeof amountEach[asset.symbol] === 'undefined') {
+            let useThisAmount = amountEach[asset.symbol];
+            console.log('///////', useThisAmount)
+            return Math.round((useThisAmount * 100) / totalWallet); 
+        }
     };
 
     const wallet = data.assets.map((asset, key) => {
         return <ListGroupItem style={{display: 'flex', justifyContent: 'space-between'}} className="list-group-item">
                     <img src={asset.img} className="logo-img" alt="Cryptocurrency logo"></img>
                     <p>{asset.name}</p>
-                    <p>{totalPercentage(amountEach, totalWallet)} %</p>
+                    <p>{totalPercentage(asset)} %</p>
                     <p>{asset.amount} {asset.symbol}</p>
                     {convertedAmount(asset)}
                 </ListGroupItem> 
     });
-
-    console.log(Object.keys(amountEach).length)
-    console.log(Object.keys(totalWallet).length)
 
     return(
         
