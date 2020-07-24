@@ -41,20 +41,19 @@ function List() {
         return <span>Pas de taux disponible</span>
     };
 
-   /*  console.log(amountEach) */
-
     const totalAmount = function(amountEach) {
         let total = Object.keys(amountEach).reduce((sum, key) => sum + (amountEach[key]), 0);
-        /* console.log(total) */
         totalWallet = total;
         return total;
     };
 
-    console.log(totalWallet)
-    const totalPercentage = function(asset) {
+    const totalPercentage = function(asset, amountEach, totalWallet) {
+        console.log('----- ASSET', asset);
+      	console.log('----- AMOUNT EACH', amountEach);
+      	console.log('----- TOTAL WALLET', totalWallet);
         if (typeof amountEach[asset.symbol] === 'undefined') {
             let useThisAmount = amountEach[asset.symbol];
-            console.log('///////', useThisAmount)
+            console.log('----- USE THIS AMOUNT', useThisAmount);
             return Math.round((useThisAmount * 100) / totalWallet); 
         }
     };
@@ -63,7 +62,7 @@ function List() {
         return <ListGroupItem style={{display: 'flex', justifyContent: 'space-between'}} className="list-group-item">
                     <img src={asset.img} className="logo-img" alt="Cryptocurrency logo"></img>
                     <p>{asset.name}</p>
-                    <p>{totalPercentage(asset)} %</p>
+                    <p>{totalPercentage(asset, amountEach, totalWallet)} %</p>
                     <p>{asset.amount} {asset.symbol}</p>
                     {convertedAmount(asset)}
                 </ListGroupItem> 
