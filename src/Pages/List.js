@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/list.css';
 import data from '../data';
 import Nav from '../Components/Nav';
+import Clock from '../Components/Clock';
 import Footer from '../Components/Footer';
 import { ListGroup, ListGroupItem, Spinner } from 'reactstrap';
 import NumberFormat from 'react-number-format';
@@ -10,8 +11,6 @@ import { connect } from 'react-redux';
 
 function List(props) {
 
-    const [ customDate, setCustomDate ] = useState();
-    const [ customTime, setCustomTime ] = useState();
     const [ rate, setRate ] = useState({});
     const [ loading, setLoading ] = useState(false);
     const [ convertedAmounts, setConvertedAmounts ] = useState({});
@@ -53,16 +52,9 @@ function List(props) {
             })
         };
 
-        const updateTime = function(){
-            setCustomDate(new Date().toLocaleDateString("en-EN"));
-            setCustomTime(new Date().toLocaleTimeString("en-EN"));
-        };
-
         loadData();
         setInterval(loadData, 10000);
 
-        updateTime();
-        setInterval(updateTime, 1000);
     }, []);
 
     const wallet = data.assets.map((asset, key) => {
@@ -75,14 +67,14 @@ function List(props) {
                 </ListGroupItem>
     });
 
-    return(
+    return (
 
         <div className="App">
 
             <Nav />
 
             <div className="header">
-                <h4 className="date">{customDate}, {customTime}</h4>
+                <Clock />
                 <div className="button-group">
                     <button className="btn buy-btn">Buy Now</button>
                     <button className="btn sale-btn">Sell Now</button>

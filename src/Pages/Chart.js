@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Nav from '../Components/Nav';
+import Clock from '../Components/Clock';
 import Footer from '../Components/Footer';
 import { Pie } from 'react-chartjs-2';
 import NumberFormat from 'react-number-format';
@@ -8,8 +9,6 @@ import { connect } from 'react-redux';
 
 function Chart(props) {
     
-    const [ customDate, setCustomDate ] = useState();
-    const [ customTime, setCustomTime ] = useState();
     const [ chartData, setChartData ] = useState({});
 
     useEffect(() => {
@@ -33,15 +32,8 @@ function Chart(props) {
             })
         };
 
-        const updateTime = function(){
-            setCustomDate(new Date().toLocaleDateString("en-EN"));
-            setCustomTime(new Date().toLocaleTimeString("en-EN"));
-        };
-
         chart();
 
-        updateTime();
-        setInterval(updateTime, 1000);
     }, []);
 
     return(
@@ -50,7 +42,7 @@ function Chart(props) {
             <Nav />
 
             <div className="header header-chart">
-                <h4 className="date">{customDate}, {customTime}</h4>
+                <Clock />
                 <div className="button-group">
                     <button className="btn buy-btn">Buy Now</button>
                     <button className="btn sale-btn">Sell Now</button>
