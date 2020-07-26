@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Nav from '../Components/Nav';
 import Footer from '../Components/Footer';
 import { Pie } from 'react-chartjs-2';
+import NumberFormat from 'react-number-format';
 
 import { connect } from 'react-redux';
 
@@ -11,33 +12,34 @@ function Chart(props) {
     const [ customTime, setCustomTime ] = useState();
     const [ chartData, setChartData ] = useState({});
 
-    let data = Object.values(props.data);
-
-    const chart = () => {
-        setChartData({
-            labels: ["Bitcoin", "Ethereum", "Dash", "BAT", 'USD Coin'],
-            datasets: [
-                {
-                    data: data,
-                    backgroundColor: [
-                        '#F1642B',
-                        '#ffce82',
-                        '#7a61e3',
-                        '#f980a2',
-                        '#c4b9fe'
-                    ],
-                    borderWidth: 1
-                }
-            ]
-        })
-    };
-
     useEffect(() => {
-        chart();
+        const chart = () => {
+            let data = Object.values(props.data);
+            setChartData({
+                labels: ["Bitcoin", "Ethereum", "Dash", "BAT", 'USD Coin'],
+                datasets: [
+                    {
+                        data: data,
+                        backgroundColor: [
+                            '#F1642B',
+                            '#ffce82',
+                            '#7a61e3',
+                            '#f980a2',
+                            '#c4b9fe'
+                        ],
+                        borderWidth: 1
+                    }
+                ]
+            })
+        };
+
         const updateTime = function(){
             setCustomDate(new Date().toLocaleDateString("en-EN"));
             setCustomTime(new Date().toLocaleTimeString("en-EN"));
-        }
+        };
+
+        chart();
+
         updateTime();
         setInterval(updateTime, 1000);
     }, []);
@@ -57,7 +59,11 @@ function Chart(props) {
 
             <div style={{marginTop: '40px', marginBottom: '40px'}}>
                 <h4>Overview</h4>
-                <div className="text-group" style={{marginBottom: '20px'}}>
+                <div className="text-group">
+                    <h3>Your Wallet</h3>
+                    <p style={{paddingTop: '8px'}}>
+                        <NumberFormat value={props.total} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
+                    </p>
                 </div>
                 <Pie data={chartData}/>
             </div>
@@ -70,7 +76,7 @@ function Chart(props) {
 
 function mapStateToProps(state) {
     return {
-        data: state.data
+        data: state.data, total: state.total
     }
 };
 

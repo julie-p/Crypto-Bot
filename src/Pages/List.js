@@ -20,7 +20,7 @@ function List(props) {
 
     useEffect(() => {
         const loadData = async () => {
-            //get rate data
+            //get rate data from api
             const apiData = await fetch('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,DASH,BAT,USDC&tsyms=EUR&api_key=b200f3172f07713ebb556ca20eab4e5b0884d68bc2f89a8326077294489e4943');
             const apiResponse = await apiData.json();
             return await updateData(apiResponse);
@@ -29,7 +29,7 @@ function List(props) {
         const updateData = function(rate){
             return new Promise(resolve => {
                 setRate(rate);
-                //calculate converted amount
+                //calculate converted amount per currency
                 data.assets.map((asset, key) => {
                     if (typeof rate[asset.symbol] !== "undefined") {
                         convertedAmounts[asset.symbol] = asset.amount * rate[asset.symbol]['EUR'];
@@ -37,11 +37,12 @@ function List(props) {
                 });
                 setConvertedAmounts(convertedAmounts);
 
-                //get total mount
+                //get total amount wallet
                 totalConvertedAmount = Object.keys(convertedAmounts).reduce((sum, key) => sum + (convertedAmounts[key]), 0);
                 setTotalConvertedAmount(totalConvertedAmount);
+                props.addTotal(totalConvertedAmount);
 
-                //get percentage amount
+                //get percentage per currency
                 Object.keys(convertedAmounts).map((key, index) => {
                     percentageAmounts[key] = ((convertedAmounts[key] * 100) / totalConvertedAmount).toFixed(2);
                 });
@@ -50,12 +51,12 @@ function List(props) {
 
                 setLoading(true);
             })
-        }
+        };
 
         const updateTime = function(){
             setCustomDate(new Date().toLocaleDateString("en-EN"));
             setCustomTime(new Date().toLocaleTimeString("en-EN"));
-        }
+        };
 
         loadData();
         setInterval(loadData, 10000);
@@ -118,6 +119,9 @@ function mapDispatchToProps (dispatch) {
     return {
         addData: function(data) {
             dispatch({type: 'addData', data: data})
+        },
+        addTotal: function(total) {
+            dispatch({type: 'addTotal', total: total})
         }
     }
 };
