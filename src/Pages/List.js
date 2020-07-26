@@ -63,7 +63,9 @@ function List(props) {
                     <p>{asset.name}</p>
                     <p>{percentageAmounts[asset.symbol]}%</p>
                     <p>{asset.amount} {asset.symbol}</p>
-                    <span><NumberFormat value={convertedAmounts[asset.symbol]} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} /></span>
+                    <span>
+                        <NumberFormat value={convertedAmounts[asset.symbol]} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
+                    </span>
                 </ListGroupItem>
     });
 

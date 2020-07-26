@@ -27,7 +27,7 @@ function Footer() {
     return (
         <div className="footer-menu">
             <div className="footer-link-col">
-                <Link className="footer-link">
+                <Link to="#"className="footer-link">
                     <FontAwesomeIcon icon={faHome} className="footer-icon" />
                 </Link>
                 <Link to="/" className={activeMainPage}>
