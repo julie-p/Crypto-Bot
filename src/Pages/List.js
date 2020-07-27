@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/list.css';
+import '../styles/main.css';
 import data from '../data';
 import Nav from '../Components/Nav';
 import Clock from '../Components/Clock';
