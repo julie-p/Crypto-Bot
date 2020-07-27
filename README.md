@@ -29,7 +29,7 @@ Project is created with :
 
 * See the amount of your wallet at a glance
 * The amount of each cryptocurrency and the total of the wallet is updated every 10 seconds
-* See the percentage of each crypto currency in the portfolio with clear chart pie
+* See the percentage of each cryptocurrency in the portfolio with clear chart pie
 * Local date and time
 * When the page is displayed, all the data is shown simultaneously with the use of a loader
 ## Setup
