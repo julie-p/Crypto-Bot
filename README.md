@@ -1,3 +1,5 @@
+# CryptoBot
+
 ## Table of Content
 
 * [General Info](#general-info)
@@ -5,13 +7,11 @@
 * [Functionalities](#functionalities)
 * [Setup](#setup)
 
-
 ## General Info
 
 Cryptocurrency portfolio using CryptoCompare API https://min-api.cryptocompare.com/documentation with conversion of each crypto currency into euros, total amount of the portfolio, percentage of each currency in the portfolio and display with a chart pie.
 
-![CryptoBot index page screenshot](/img/crypto-bot.PNG?raw=true "CryptoBot index page screenshot")
-![CryptoBot chart page screenshot](/img/crypto-bot-2.PNG?raw=true "CryptoBot chart page screenshot")
+![CryptoBot index page screenshot](/public/img/crypto-bot.PNG?raw=true)![CryptoBot chart page screenshot](/public/img/crypto-bot-2.PNG?raw=true)
 
 
 ## Technologies
@@ -31,7 +31,7 @@ Project is created with :
 * The amount of each cryptocurrency and the total of the wallet is updated every 10 seconds
 * See the percentage of each crypto currency in the portfolio with clear chart pie
 * Local date and time
-
+* When the page is displayed, all the data is shown simultaneously with the use of a loader
 ## Setup
 
 To run this project, install locally using npm :
