@@ -33,7 +33,6 @@ function Chart(props) {
         };
 
         chart();
-
     }, []);
 
     return(

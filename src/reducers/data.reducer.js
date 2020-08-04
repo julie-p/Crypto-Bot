@@ -1,4 +1,4 @@
-export default function (data = [], action) {
+export default function (data = {}, action) {
 
     switch (action.type) {
         case 'addData':

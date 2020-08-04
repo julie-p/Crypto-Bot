@@ -18,32 +18,36 @@ function List(props) {
     let   [ totalConvertedAmount, setTotalConvertedAmount ] = useState(0);
 
     useEffect(() => {
+        //loadData s'éxécute à la fin, une fois tous les calculs faits 
         const loadData = async () => {
             //get rate data from api
             const apiData = await fetch('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,DASH,BAT,USDC&tsyms=EUR&api_key=b200f3172f07713ebb556ca20eab4e5b0884d68bc2f89a8326077294489e4943');
             const apiResponse = await apiData.json();
-            return await updateData(apiResponse);
+            return await updateData(apiResponse); //attend que updateData soit exécuté 
         };
 
-        const updateData = function(rate){
+        const updateData = function(rate){//rate == réponse API
             return new Promise(resolve => {
                 setRate(rate);
                 //calculate converted amount per currency
                 data.assets.map((asset, key) => {
-                    if (typeof rate[asset.symbol] !== "undefined") {
+                    if (typeof rate[asset.symbol] !== "undefined") {//Vérifie que le symbole existe bien dans data.js
+                        //fait les conversions et les stockent dans une variable
                         convertedAmounts[asset.symbol] = asset.amount * rate[asset.symbol]['EUR'];
                     }
                 });
                 setConvertedAmounts(convertedAmounts);
 
                 //get total amount wallet
-                totalConvertedAmount = Object.keys(convertedAmounts).reduce((sum, key) => sum + (convertedAmounts[key]), 0);
+                //Fait la somme du portefeuille et stocke dans une variable
+                totalConvertedAmount = Object.keys(convertedAmounts).reduce((sum, key) => sum + (convertedAmounts[key]), 0);//Part de la valeur initiale 0
                 setTotalConvertedAmount(totalConvertedAmount);
                 props.addTotal(totalConvertedAmount);
 
                 //get percentage per currency
+                //Boucle sur tous les montants convertis et calcule les %
                 Object.keys(convertedAmounts).map((key, index) => {
-                    percentageAmounts[key] = ((convertedAmounts[key] * 100) / totalConvertedAmount).toFixed(2);
+                    percentageAmounts[key] = ((convertedAmounts[key] * 100) / totalConvertedAmount).toFixed(2); //toFixed arrondi à 2 décimales après la virgule
                 });
                 setPercentageAmounts(percentageAmounts);
                 props.addData(percentageAmounts);
@@ -54,9 +58,11 @@ function List(props) {
 
         loadData();
         setInterval(loadData, 10000);
-
     }, []);
 
+    //Boucle sur data.js pour afficher dynamiquement les infos du portefeuille
+    //percentageAmounts[asset.symbol] == tous les % par symboles
+    //convertedAmounts[asset.symbol] == tous les montants convertis par symboles
     const wallet = data.assets.map((asset, key) => {
         return <ListGroupItem key={"wallet_" + asset.symbol + "_" + key} style={{display: 'flex', justifyContent: 'space-between'}} className="list-group-item">
                     <img src={asset.img} className="logo-img" alt="Cryptocurrency logo"></img>
@@ -70,7 +76,6 @@ function List(props) {
     });
 
     return (
-
         <div className="App">
 
             <Nav />

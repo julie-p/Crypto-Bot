@@ -29,6 +29,6 @@ export default {
             img: './img/USDCoin.png',
             symbol: 'USDC',
             amount: 14.5099
-        },
+        }
     ]
-}
+};

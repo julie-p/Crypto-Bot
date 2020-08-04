@@ -12,13 +12,12 @@ function Clock() {
         };
 
         updateTime();
-        setInterval(updateTime, 1000);
+        setInterval(updateTime, 1000); //Update l'heure toutes les secondes
     }, []);
 
     return (
         <h4 className="date">{customDate}, {customTime}</h4>
     )
 };
-
 
 export default Clock;
