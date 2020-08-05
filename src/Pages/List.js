@@ -41,15 +41,14 @@ function List(props) {
                 //get total amount wallet
                 //Fait la somme du portefeuille et stocke dans une variable
                 totalConvertedAmount = Object.keys(convertedAmounts).reduce((sum, key) => sum + (convertedAmounts[key]), 0);//Part de la valeur initiale 0
-                setTotalConvertedAmount(totalConvertedAmount);
                 props.addTotal(totalConvertedAmount);
 
                 //get percentage per currency
                 //Boucle sur tous les montants convertis et calcule les %
                 Object.keys(convertedAmounts).map((key, index) => {
+                    console.log(key)
                     percentageAmounts[key] = ((convertedAmounts[key] * 100) / totalConvertedAmount).toFixed(2); //toFixed arrondi à 2 décimales après la virgule
                 });
-                setPercentageAmounts(percentageAmounts);
                 props.addData(percentageAmounts);
 
                 setLoading(true);
@@ -67,7 +66,7 @@ function List(props) {
         return <ListGroupItem key={"wallet_" + asset.symbol + "_" + key} style={{display: 'flex', justifyContent: 'space-between'}} className="list-group-item">
                     <img src={asset.img} className="logo-img" alt="Cryptocurrency logo"></img>
                     <p>{asset.name}</p>
-                    <p>{percentageAmounts[asset.symbol]}%</p>
+                    <p>{props.data[asset.symbol]}%</p>
                     <p>{asset.amount} {asset.symbol}</p>
                     <span>
                         <NumberFormat value={convertedAmounts[asset.symbol]} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
@@ -93,7 +92,7 @@ function List(props) {
                 <div className="text-group">
                         <h3>Your Wallet</h3>
                         <p style={{paddingTop: '8px'}}>
-                            <NumberFormat value={totalConvertedAmount} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
+                            <NumberFormat value={props.total} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
                         </p>
                 </div>
                 { loading ?
@@ -114,7 +113,13 @@ function List(props) {
     )
 };
 
-function mapDispatchToProps (dispatch) {
+function mapStateToProps(state) {
+    return {
+        data: state.data, total: state.total
+    }
+};
+
+function mapDispatchToProps(dispatch) {
     return {
         addData: function(data) {
             dispatch({type: 'addData', data: data})
@@ -126,6 +131,6 @@ function mapDispatchToProps (dispatch) {
 };
 
 export default connect(
-    null, 
+    mapStateToProps, 
     mapDispatchToProps
 )(List);
