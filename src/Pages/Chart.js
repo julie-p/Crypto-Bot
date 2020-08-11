@@ -50,15 +50,15 @@ function Chart(props) {
             </div>
             
             {props.loading ?
-            <div style={{marginTop: '40px', marginBottom: '40px'}}>
+            <div className="overview">
                 <h4>Overview</h4>
                 <div className="text-group">
                     <h3>Your Wallet</h3>
-                    <p style={{paddingTop: '8px'}}>
+                    <p>
                         <NumberFormat value={props.total} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
                     </p>
                 </div>
-                <Pie data={chartData}/>
+                <Pie data={chartData} />
             </div>
             :
             <Loader />

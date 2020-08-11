@@ -62,7 +62,7 @@ function List(props) {
     //percentageAmounts[asset.symbol] == tous les % par symboles
     //convertedAmounts[asset.symbol] == tous les montants convertis par symboles
     const wallet = data.assets.map((asset, key) => {
-        return  <ListGroupItem key={"wallet_" + asset.symbol + "_" + key} style={{display: 'flex', justifyContent: 'space-between'}} className="list-group-item">
+        return  <ListGroupItem key={"wallet_" + asset.symbol + "_" + key} className="list-group-item">
                     <img src={asset.img} className="logo-img" alt="Cryptocurrency logo"></img>
                     <p>{asset.name}</p>
                     <p>{props.data[asset.symbol]}%</p>
@@ -87,11 +87,11 @@ function List(props) {
             </div>
 
             { props.loading ?
-            <ListGroup style={{marginTop: '40px'}}>
+            <ListGroup className="overview">
                 <h4>Details</h4>
                 <div className="text-group">
                         <h3>Your Wallet</h3>
-                        <p style={{paddingTop: '8px'}}>
+                        <p>
                             <NumberFormat value={props.total} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
                         </p>
                 </div>
