@@ -12,7 +12,7 @@ function Footer() {
     
     let activeMainPage = "footer-link";
     let activeChartPage = "footer-link";
-
+    
     switch (location.pathname) {
         case '/' :
             activeMainPage += " active-link";
@@ -27,7 +27,7 @@ function Footer() {
     return (
         <div className="footer-menu">
             <div className="footer-link-col">
-                <Link to="#"className="footer-link">
+                <Link to="#" className="footer-link">
                     <FontAwesomeIcon icon={faHome} className="footer-icon" />
                 </Link>
                 <Link to="/" className={activeMainPage}>

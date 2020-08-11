@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Nav from '../Components/Nav';
-import Clock from '../Components/Clock';
+import Header from '../Components/Header';
 import Loader from '../Components/Loader';
 import Footer from '../Components/Footer';
 import { Pie } from 'react-chartjs-2';
@@ -42,13 +42,7 @@ function Chart(props) {
 
             <Nav />
 
-            <div className="header header-chart">
-                <Clock />
-                <div className="button-group">
-                    <button className="btn buy-btn">Buy Now</button>
-                    <button className="btn sale-btn">Sell Now</button>
-                </div>
-            </div>
+            <Header />
             
             {props.loading ?
             <div className="overview">

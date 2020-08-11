@@ -6,7 +6,7 @@ function Clock() {
     const [ customTime, setCustomTime ] = useState();
 
     useEffect(() => {
-        const updateTime = function(){
+        const updateTime = () => {
             setCustomDate(new Date().toLocaleDateString("fr-FR"));
             setCustomTime(new Date().toLocaleTimeString("fr-FR"));
         };

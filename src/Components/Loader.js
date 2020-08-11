@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/loader.css';
 import { Spinner } from 'reactstrap';
 
 function Loader() {

@@ -7,8 +7,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import data from './reducers/data.reducer';
 import total from './reducers/total.reducer';
 import loading from './reducers/loader.reducer';
-import {Provider} from 'react-redux';
-import {createStore, combineReducers} from 'redux';
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
 
 const store = createStore(combineReducers({data, total, loading}));
 

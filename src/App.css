@@ -35,6 +35,7 @@ h4 {
   letter-spacing: 2px;
 }
 
+/* App media queries */
 @media (max-width: 1366px) {
   .App {
     width: 30%;
