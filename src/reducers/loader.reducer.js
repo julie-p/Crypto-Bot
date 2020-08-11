@@ -1,7 +1,7 @@
 export default function (loading = null, action) {
 
     switch (action.type) {
-        case 'setLoading':
+        case 'isLoaded':
             return action.loading;
 
         default:

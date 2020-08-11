@@ -50,7 +50,7 @@ function List(props) {
                 });
                 props.addData(percentageAmounts);
  
-                props.setLoading(true);
+                props.isLoaded(true);
             })
         };
 
@@ -122,8 +122,8 @@ function mapDispatchToProps(dispatch) {
         addTotal: function(total) {
             dispatch({type: 'addTotal', total: total})
         },
-        setLoading: function(loading) {
-            dispatch({type: 'setLoading', loading: loading})
+        isLoaded: function(loading) {
+            dispatch({type: 'isLoaded', loading: loading})
         }
     }
 };
