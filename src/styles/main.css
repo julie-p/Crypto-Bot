@@ -75,6 +75,14 @@
     justify-content: space-between;
   }
 
+  .fullpage-spinner {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    margin-top: 60px; 
+    margin-bottom: 60px;
+  }
+
   .logo-img {
     width: 40px;
   }

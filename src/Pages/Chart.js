@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Nav from '../Components/Nav';
 import Clock from '../Components/Clock';
+import Loader from '../Components/Loader';
 import Footer from '../Components/Footer';
 import { Pie } from 'react-chartjs-2';
 import NumberFormat from 'react-number-format';
@@ -47,7 +48,8 @@ function Chart(props) {
                     <button className="btn sale-btn">Sell Now</button>
                 </div>
             </div>
-
+            
+            {props.loading ?
             <div style={{marginTop: '40px', marginBottom: '40px'}}>
                 <h4>Overview</h4>
                 <div className="text-group">
@@ -58,6 +60,9 @@ function Chart(props) {
                 </div>
                 <Pie data={chartData}/>
             </div>
+            :
+            <Loader />
+            }
 
             <Footer />
             
@@ -67,7 +72,7 @@ function Chart(props) {
 
 function mapStateToProps(state) {
     return {
-        data: state.data, total: state.total
+        data: state.data, total: state.total, loading: state.loading
     }
 };
 

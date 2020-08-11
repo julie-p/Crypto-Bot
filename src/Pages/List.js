@@ -3,6 +3,7 @@ import '../styles/main.css';
 import data from '../data';
 import Nav from '../Components/Nav';
 import Clock from '../Components/Clock';
+import Loader from '../Components/Loader';
 import Footer from '../Components/Footer';
 import { ListGroup, ListGroupItem, Spinner } from 'reactstrap';
 import NumberFormat from 'react-number-format';
@@ -12,7 +13,6 @@ import { connect } from 'react-redux';
 function List(props) {
 
     const [ rate, setRate ] = useState({});
-    const [ loading, setLoading ] = useState(false);
     const [ convertedAmounts, setConvertedAmounts ] = useState({});
     const [ percentageAmounts, setPercentageAmounts ] = useState({});
     let   [ totalConvertedAmount, setTotalConvertedAmount ] = useState(0);
@@ -23,7 +23,7 @@ function List(props) {
             //get rate data from api
             const apiData = await fetch('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,DASH,BAT,USDC&tsyms=EUR&api_key=b200f3172f07713ebb556ca20eab4e5b0884d68bc2f89a8326077294489e4943');
             const apiResponse = await apiData.json();
-            return await updateData(apiResponse); //attend que updateData soit exécuté 
+            return await updateData(apiResponse);//attend que updateData soit exécuté 
         };
 
         const updateData = function(rate){//rate == réponse API
@@ -46,12 +46,11 @@ function List(props) {
                 //get percentage per currency
                 //Boucle sur tous les montants convertis et calcule les %
                 Object.keys(convertedAmounts).map((key, index) => {
-                    console.log(key)
                     percentageAmounts[key] = ((convertedAmounts[key] * 100) / totalConvertedAmount).toFixed(2); //toFixed arrondi à 2 décimales après la virgule
                 });
                 props.addData(percentageAmounts);
-
-                setLoading(true);
+ 
+                props.setLoading(true);
             })
         };
 
@@ -63,7 +62,7 @@ function List(props) {
     //percentageAmounts[asset.symbol] == tous les % par symboles
     //convertedAmounts[asset.symbol] == tous les montants convertis par symboles
     const wallet = data.assets.map((asset, key) => {
-        return <ListGroupItem key={"wallet_" + asset.symbol + "_" + key} style={{display: 'flex', justifyContent: 'space-between'}} className="list-group-item">
+        return  <ListGroupItem key={"wallet_" + asset.symbol + "_" + key} style={{display: 'flex', justifyContent: 'space-between'}} className="list-group-item">
                     <img src={asset.img} className="logo-img" alt="Cryptocurrency logo"></img>
                     <p>{asset.name}</p>
                     <p>{props.data[asset.symbol]}%</p>
@@ -87,6 +86,7 @@ function List(props) {
                 </div>
             </div>
 
+            { props.loading ?
             <ListGroup style={{marginTop: '40px'}}>
                 <h4>Details</h4>
                 <div className="text-group">
@@ -95,17 +95,12 @@ function List(props) {
                             <NumberFormat value={props.total} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
                         </p>
                 </div>
-                { loading ?
-                (wallet)
-                :
-                (
-                <div style={{margin: "0 auto"}}>
-                    <Spinner type="grow" color="warning"/>
-                    <Spinner type="grow" color="warning"/>
-                    <Spinner type="grow" color="warning"/>
-                </div>
-                )}
+                
+                {wallet}
             </ListGroup>
+            :
+            <Loader />
+            }
 
             <Footer />
 
@@ -115,7 +110,7 @@ function List(props) {
 
 function mapStateToProps(state) {
     return {
-        data: state.data, total: state.total
+        data: state.data, total: state.total, loading: state.loading
     }
 };
 
@@ -126,6 +121,9 @@ function mapDispatchToProps(dispatch) {
         },
         addTotal: function(total) {
             dispatch({type: 'addTotal', total: total})
+        },
+        setLoading: function(loading) {
+            dispatch({type: 'setLoading', loading: loading})
         }
     }
 };
