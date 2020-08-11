@@ -34,6 +34,7 @@ function Chart(props) {
         };
 
         chart();
+        setInterval(chart, 10000);
     }, []);
 
     return(
@@ -72,7 +73,9 @@ function Chart(props) {
 
 function mapStateToProps(state) {
     return {
-        data: state.data, total: state.total, loading: state.loading
+        data: state.data, 
+        total: state.total, 
+        loading: state.loading
     }
 };
 
