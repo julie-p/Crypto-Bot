@@ -60,7 +60,8 @@ const SignIn = ({ history }) => {
                 />
 
                 <button className="btn btn-signin">Go !</button>
-                <Link to="/signup">New here ?</Link>
+                <h6>New around here ?</h6>
+                <Link to="/signup">Create your account</Link>
 
             </form>
 

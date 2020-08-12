@@ -50,7 +50,8 @@ const SignUp = ({ history }) => {
                 />
 
                 <button className="btn btn-signin" type="submit">Go !</button>
-                <Link to="/">Already have an account ?</Link>
+                <h6>Already one of us ?</h6>
+                <Link to="/">Login to your account</Link>
 
             </form>
 
