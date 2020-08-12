@@ -1,10 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useContext } from 'react';
+import { withRouter, Redirect } from "react-router";
+import app from '../base.js';
+import { AuthContext } from "../Auth.js";
 import '../styles/login.css';
 import Nav from '../Components/Nav';
 import Clock from '../Components/Clock';
 import { Link } from 'react-router-dom';
 
-function SignIn() {
+const SignIn = ({ history }) => {
+
+    const handleLogin = useCallback(
+        async event => {
+            event.preventDefault();
+            const { email, password } = event.target.elements;
+            try {
+                await app   
+                    .auth()
+                    .signInWithEmailAndPassword(email.value, password.value);
+                history.push("/list");
+            } catch (error) {
+                alert(error);
+            }
+        },
+        [history]
+    );
+
+    const { currentUser } = useContext(AuthContext);
+
+    if (currentUser) {
+        return <Redirect to="/list" />;
+    };
 
     return(
         <div className="App">
@@ -14,29 +39,33 @@ function SignIn() {
                 <Clock />
             </div>
 
-            <div className="login-container">
-                <h3>Login :</h3>
+            <form 
+                className="login-container"
+                onSubmit={handleLogin}
+            >
+                <h3>Login to your account :</h3>
 
                 <input 
                     className="input-signin"
+                    name="email"
                     type="email" 
                     placeholder="Email" 
-                    value="email"
                 />
 
                 <input 
                     className="input-signin"
+                    name="password"
+                    type="password"
                     placeholder="Password" 
-                    value="password"
                 />
 
                 <button className="btn btn-signin">Go !</button>
                 <Link to="/signup">New here ?</Link>
 
-            </div>
+            </form>
 
         </div>
     )
 };
 
-export default SignIn;
+export default withRouter(SignIn);

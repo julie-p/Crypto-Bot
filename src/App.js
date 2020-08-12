@@ -5,6 +5,8 @@ import SignUp from './Pages/SignUp';
 import List from './Pages/List';
 import Chart from './Pages/Chart';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { AuthProvider } from "./Auth";
+import PrivateRoute from './PrivateRoute';
 
 import data from './reducers/data.reducer';
 import total from './reducers/total.reducer';
@@ -17,16 +19,18 @@ const store = createStore(combineReducers({data, total, loading}));
 function App() {
 
   return (
-    <Provider store={store}>
-      <Router>
-        <Switch>
-          <Route path='/' exact component={SignIn}/>
-          <Route path='/signup' exact component={SignUp}/>
-          <Route path='/list' component={List}/>
-          <Route path='/chart' component={Chart}/>
-        </Switch>
-      </Router>
-    </Provider>
+    <AuthProvider>
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route path='/' exact component={SignIn}/>
+            <Route path='/signup' component={SignUp}/>
+            <PrivateRoute  path='/list' component={List}/>
+            <PrivateRoute  path='/chart' component={Chart}/>
+          </Switch>
+        </Router>
+      </Provider>
+    </AuthProvider>
   )
 };
 

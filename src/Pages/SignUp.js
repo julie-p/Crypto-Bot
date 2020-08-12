@@ -1,10 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback } from 'react';
+import { withRouter } from 'react-router';
+import app from '../base.js';
 import '../styles/login.css';
 import Nav from '../Components/Nav';
 import Clock from '../Components/Clock';
 import { Link } from 'react-router-dom';
 
-function SignUp() {
+const SignUp = ({ history }) => {
+
+    const handleSignUp = useCallback(async event => {
+        event.preventDefault();
+        const { email, password } = event.target.elements;
+        try {
+            await app
+                .auth()
+                .createUserWithEmailAndPassword(email.value, password.value);
+            history.push('/list');
+        } catch (error) {
+            alert(error);
+        }
+    }, [history]);
 
     return(
         <div className="App">
@@ -14,29 +29,33 @@ function SignUp() {
                 <Clock />
             </div>
 
-            <div className="login-container">
+            <form 
+                className="login-container"
+                onSubmit={handleSignUp}
+            >
                 <h3>Create your account :</h3>
-
+                
                 <input 
                     className="input-signin"
+                    name="email"
                     type="email" 
                     placeholder="Email" 
-                    value="email"
                 />
 
                 <input 
                     className="input-signin"
+                    name="password"
+                    type="password"
                     placeholder="Password" 
-                    value="password"
                 />
 
-                <button className="btn btn-signin">Go !</button>
-                <Link to="/">Already an account ?</Link>
+                <button className="btn btn-signin" type="submit">Go !</button>
+                <Link to="/">Already have an account ?</Link>
 
-            </div>
+            </form>
 
         </div>
     )
 };
 
-export default SignUp;
+export default withRouter(SignUp);

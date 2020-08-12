@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.5.0",
     "chart.js": "^2.9.3",
+    "firebase": "^7.17.2",
     "format": "^0.2.2",
     "number": "0.0.1",
     "react": "^16.13.1",
@@ -19,6 +20,7 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-with-firebase-auth": "^1.3.2",
     "reactstrap": "^8.5.1",
     "redux": "^4.0.5"
   },

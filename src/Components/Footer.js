@@ -1,7 +1,8 @@
 import React from 'react';
+import app from '../base.js';
 import '../styles/footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { faChartPie } from '@fortawesome/free-solid-svg-icons';
 import { Link, useLocation } from 'react-router-dom';
@@ -31,9 +32,9 @@ function Footer() {
     return (
         <div className="footer-menu">
             <div className="footer-link-col">
-                <Link to="/" className={activeLoginPage}>
-                    <FontAwesomeIcon icon={faHome} className="footer-icon" />
-                </Link>
+                <button className={activeLoginPage} onClick={() => app.auth().signOut()}>
+                    <FontAwesomeIcon icon={faPowerOff} className="footer-icon" />
+                </button>
                 <Link to="/list" className={activeMainPage}>
                     <FontAwesomeIcon icon={faList} className="footer-icon" />
                 </Link>
