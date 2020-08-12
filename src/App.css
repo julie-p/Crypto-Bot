@@ -35,6 +35,28 @@ h4 {
   letter-spacing: 2px;
 }
 
+h6 {
+  color: #ffffff;
+  letter-spacing: 2px;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: #F1642B;
+  font-style: italic;
+}
+
+a:hover {
+  color: #F1642B;
+  text-decoration: none;
+}
+
+input:focus {
+  outline: none;
+}
+
 /* App media queries */
 @media (max-width: 1366px) {
   .App {

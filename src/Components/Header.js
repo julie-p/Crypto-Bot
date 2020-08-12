@@ -6,11 +6,13 @@ function Header() {
 
     let location = useLocation();
     
-    let header;
+    let header = "header";
     
     switch (location.pathname) {
+        case '/list' :
+            header += " header-list";
         case '/chart' :
-            header = "header header-chart";
+            header += " header-chart";
             break;
         default :
             header = "header";

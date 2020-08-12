@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import SignIn from './Pages/SignIn';
+import SignUp from './Pages/SignUp';
 import List from './Pages/List';
 import Chart from './Pages/Chart';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -18,7 +20,9 @@ function App() {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route path='/' exact component={List}/>
+          <Route path='/' exact component={SignIn}/>
+          <Route path='/signup' exact component={SignUp}/>
+          <Route path='/list' component={List}/>
           <Route path='/chart' component={Chart}/>
         </Switch>
       </Router>
