@@ -1,0 +1,55 @@
+/* List component styles */
+  
+/* Buttons */
+  .buy-btn {
+    background-color: #F1642B;
+    border-radius: 10px 0 0 10px;
+  }
+  
+  .sale-btn {
+    background-color: #ffce82;
+    border-radius: 0 10px 10px 0;
+  }
+  
+/* Overview styles */
+  .overview {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .text-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .text-group p {
+    padding-top: 8px;
+  }
+
+  .logo-img {
+    width: 40px;
+  }
+  
+  .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+/* Media queries */
+  @media (max-width: 1295px) {
+    .list-group-item {
+        font-size: 12px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .logo-img {
+        width: 30px;
+    }
+
+    .list-group-item {
+        font-size: 10px;
+    }
+  }

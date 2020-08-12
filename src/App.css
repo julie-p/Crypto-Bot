@@ -57,6 +57,31 @@ input:focus {
   outline: none;
 }
 
+/* Buttons */
+.button-group {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:hover {
+  color: #fff;
+}
+
 /* App media queries */
 @media (max-width: 1366px) {
   .App {

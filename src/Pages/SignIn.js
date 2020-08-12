@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/main.css';
+import '../styles/login.css';
 import Nav from '../Components/Nav';
 import Clock from '../Components/Clock';
 import { Link } from 'react-router-dom';

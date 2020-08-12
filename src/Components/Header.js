@@ -1,4 +1,5 @@
 import React from 'react';
+import "../styles/header.css";
 import Clock from './Clock';
 import { useLocation } from 'react-router-dom';
 
