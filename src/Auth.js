@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import app from "./base.js";
 
-export const AuthContext = React.createContext();
 //createContext permet de propager data dans tous les components
+export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
 
