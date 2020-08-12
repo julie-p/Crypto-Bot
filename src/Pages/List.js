@@ -25,7 +25,7 @@ function List(props) {
             return await updateData(apiResponse);
         };
 
-        const updateData = function(rate) {//rate == réponse API
+        const updateData = function(rate) {
             return new Promise(resolve => {
                 setRate(rate);
                 //calculate converted amount per currency
@@ -73,16 +73,15 @@ function List(props) {
 
             <Header />
 
-            { props.loading ?
+            {props.loading ?
             <ListGroup className="overview">
                 <h4>Details</h4>
                 <div className="text-group">
-                        <h3>Your Wallet</h3>
-                        <p>
-                            <NumberFormat value={props.total} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
-                        </p>
+                    <h3>Your Wallet</h3>
+                    <p>
+                        <NumberFormat value={props.total} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
+                    </p>
                 </div>
-                
                 {wallet}
             </ListGroup>
             :
