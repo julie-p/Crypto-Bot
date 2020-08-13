@@ -5,6 +5,7 @@ import { AuthContext } from "../Auth.js";
 import '../styles/login.css';
 import Nav from '../Components/Nav';
 import LoginHeader from '../Components/LoginHeader';
+import InputLogin from '../Components/InputLogin';
 import { Link } from 'react-router-dom';
 
 const SignIn = ({ history }) => {
@@ -43,25 +44,13 @@ const SignIn = ({ history }) => {
             >
                 <h3>Login to your account :</h3>
 
-                <input 
-                    className="input-signin"
-                    name="email"
-                    type="email" 
-                    placeholder="Email" 
-                />
-
-                <input 
-                    className="input-signin"
-                    name="password"
-                    type="password"
-                    placeholder="Password" 
-                />
-
-                <button className="btn btn-signin">Go !</button>
+                <InputLogin />
+                
                 <h6>First time ?</h6>
                 <Link to="/signup">Create your account</Link>
-
             </form>
+
+            
 
         </div>
     )

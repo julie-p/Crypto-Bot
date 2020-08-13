@@ -1,10 +1,14 @@
 /* Login page */
-.login-container {
+  .login-container {
     margin-top: 40px;
     margin-bottom: 40px;
     display: flex;
     flex-direction: column;
     text-align: center;
+  }
+
+  .login-container .input {
+    margin-top: 0px;
   }
 
   .login-container h3 {
@@ -25,13 +29,23 @@
   .login-container h6 {
     color: #000;
     font-weight: 300;
-    margin: 35px 0 8px 0;
+    margin: 15px 0 8px 0;
+  }
+
+  .login-container span a {
+    position: absolute;
+    bottom: 250px;
+    left: 390px;
+    font-weight: 300;
+    font-size: 10px;
+    color: #F1642B;
+    margin-left: 13px;
   }
   
   .btn-signin {
     border: none;
     color: #fff;
     background-color: #ffce82;
-    margin-top: 20px;
+    margin-top: 30px;
     font-weight: 600;
   }

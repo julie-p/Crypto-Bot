@@ -4,6 +4,7 @@ import app from '../base.js';
 import '../styles/login.css';
 import Nav from '../Components/Nav';
 import LoginHeader from '../Components/LoginHeader';
+import InputLogin from '../Components/InputLogin';
 import { Link } from 'react-router-dom';
 
 const SignUp = ({ history }) => {
@@ -33,24 +34,10 @@ const SignUp = ({ history }) => {
             >
                 <h3>Create your account :</h3>
                 
-                <input 
-                    className="input-signin"
-                    name="email"
-                    type="email" 
-                    placeholder="Email" 
-                />
-
-                <input 
-                    className="input-signin"
-                    name="password"
-                    type="password"
-                    placeholder="Password" 
-                />
-
-                <button className="btn btn-signin" type="submit">Go !</button>
+                <InputLogin />
+                
                 <h6>Already one of us ?</h6>
                 <Link to="/">Login to your account</Link>
-
             </form>
 
         </div>

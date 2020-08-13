@@ -47,6 +47,7 @@ a {
   color: #F1642B;
   font-style: italic;
   font-size: 14px;
+  cursor: pointer;
 }
 
 a:hover {
