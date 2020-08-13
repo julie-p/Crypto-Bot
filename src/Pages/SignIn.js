@@ -4,7 +4,7 @@ import app from '../base.js';
 import { AuthContext } from "../Auth.js";
 import '../styles/login.css';
 import Nav from '../Components/Nav';
-import Clock from '../Components/Clock';
+import LoginHeader from '../Components/LoginHeader';
 import { Link } from 'react-router-dom';
 
 const SignIn = ({ history }) => {
@@ -35,9 +35,7 @@ const SignIn = ({ history }) => {
         <div className="App">
             <Nav />
 
-            <div className="header header-login">
-                <Clock />
-            </div>
+            <LoginHeader />
 
             <form 
                 className="login-container"

@@ -3,7 +3,7 @@ import "../styles/header.css";
 import Clock from './Clock';
 import { useLocation } from 'react-router-dom';
 
-function Header() {
+function MainHeader() {
 
     let location = useLocation();
     
@@ -30,4 +30,4 @@ function Header() {
     )
 };
 
-export default Header;
+export default MainHeader;

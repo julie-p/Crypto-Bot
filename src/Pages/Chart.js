@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Nav from '../Components/Nav';
-import Header from '../Components/Header';
+import MainHeader from '../Components/MainHeader';
 import Loader from '../Components/Loader';
 import Footer from '../Components/Footer';
 import { Pie } from 'react-chartjs-2';
@@ -42,7 +42,7 @@ function Chart(props) {
 
             <Nav />
 
-            <Header />
+            <MainHeader />
             
             {props.loading ?
             <div className="overview">

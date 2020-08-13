@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import app from '../base.js';
 import '../styles/login.css';
 import Nav from '../Components/Nav';
-import Clock from '../Components/Clock';
+import LoginHeader from '../Components/LoginHeader';
 import { Link } from 'react-router-dom';
 
 const SignUp = ({ history }) => {
@@ -25,9 +25,7 @@ const SignUp = ({ history }) => {
         <div className="App">
             <Nav />
 
-            <div className="header header-login">
-                <Clock />
-            </div>
+            <LoginHeader />
 
             <form 
                 className="login-container"
