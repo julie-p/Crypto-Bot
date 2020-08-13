@@ -28,6 +28,7 @@ Project is created with :
 ## Functionalities
 
 * Create or log to your account
+* Chose your favorite mode between light or dark. The mode is then saved and retrieve next time you connect.
 * See the amount of your wallet at a glance
 * The amount of each cryptocurrency, the percentages and the total of the wallet is updated every 10 seconds
 * See the percentage of each cryptocurrency in the portfolio with clear chart pie - The chart is updated every 10 seconds
