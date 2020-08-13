@@ -146,7 +146,6 @@ input:focus {
   color: #fff;
 }
 
-
 /* App media queries */
 @media (max-width: 1366px) {
   .App {
