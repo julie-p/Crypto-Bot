@@ -21,24 +21,27 @@ const store = createStore(combineReducers({data, total, loading}));
 
 function App() {
 
-  const [ darkMode, setDarkMode ] = useState(getInitialMode());
+  const [ lightMode, setLightMode ] = useState(getInitialMode());
 
   useEffect(() => {
-    localStorage.setItem("dark", JSON.stringify(darkMode));
-  }, [darkMode]);
+    localStorage.setItem("light", JSON.stringify(lightMode));
+  }, [lightMode]);
+
+  console.log(lightMode)
 
   function getInitialMode() {
-    const isReturningUser = "dark" in localStorage;
-    const savedMode = JSON.parse(localStorage.getItem("dark"));
-    const userPrefersDark = getPrefColorScheme();
-    // si le mode a été sauvegardé --> dark / light
+    const isReturningUser = "light" in localStorage;
+    const savedMode = JSON.parse(localStorage.getItem("light"));
+    const userPrefersLight = getPrefColorScheme();
+    
     if (isReturningUser) {
+      // si le mode a été sauvegardé --> dark / light
       return savedMode;
-      // si theme préféré est dark --> dark
-    } else if (userPrefersDark) {
+    } else if (userPrefersLight) {
+      // si thème préféré est light --> light
       return true;
-      // sinon --> light
     } else {
+      // sinon --> dark
       return false;
     }
   };
@@ -46,13 +49,13 @@ function App() {
   function getPrefColorScheme() {
     if (!window.matchMedia) return;
 
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return window.matchMedia("(prefers-color-scheme: light)").matches;
   };
 
   return (
       <AuthProvider>
 
-        <div className={darkMode ? "App light-mode" : "App"}>
+        <div className={lightMode ? "App light-mode" : "App"}>
           <div className="nav-title">
             <div className="logo-title">
                 <FontAwesomeIcon icon={faRobot} className="logo-icon" />
@@ -60,8 +63,8 @@ function App() {
             </div>
             <button 
                 className="btn-toggle" 
-                onClick={() => setDarkMode(prevMode => !prevMode)}>
-                {darkMode ?
+                onClick={() => setLightMode(prevMode => !prevMode)}>
+                {lightMode ?
                 <FontAwesomeIcon icon={faMoon} />
                 :
                 <FontAwesomeIcon icon={faSun} />
