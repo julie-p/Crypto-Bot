@@ -27,9 +27,9 @@ function Chart(props) {
                             '#f980a2',
                             '#c4b9fe'
                         ],
-                        borderWidth: 1
+                        borderWidth: 1,
                     }
-                ],
+                ]
             })
         };
 
@@ -53,7 +53,9 @@ function Chart(props) {
                         <NumberFormat value={props.total} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
                     </p>
                 </div>
-                <Pie data={chartData} style={{color: '#fff'}} />
+                <div className="chart-data">
+                <Pie data={chartData} />
+                </div>
             </div>
             :
             <Loader />
