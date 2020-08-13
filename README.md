@@ -23,14 +23,17 @@ Project is created with :
 * Redux : 7.2.0
 * Chart.js : 2.9.3
 * API : CryptoCompare https://min-api.cryptocompare.com/documentation
+* Firebase : 7.12.2
 
 ## Functionalities
 
+* Create or log to your account
 * See the amount of your wallet at a glance
-* The amount of each cryptocurrency and the total of the wallet is updated every 10 seconds
-* See the percentage of each cryptocurrency in the portfolio with clear chart pie
+* The amount of each cryptocurrency, the percentages and the total of the wallet is updated every 10 seconds
+* See the percentage of each cryptocurrency in the portfolio with clear chart pie - The chart is updated every 10 seconds
 * Local date and time
 * When the page is displayed, all the data is shown simultaneously with the use of a loader
+
 ## Setup
 
 To run this project, install locally using npm :
