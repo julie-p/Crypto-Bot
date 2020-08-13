@@ -38,9 +38,7 @@ function Chart(props) {
     }, []);
 
     return(
-        <div className="App">
-
-            <Nav />
+        <div>
 
             <MainHeader />
             

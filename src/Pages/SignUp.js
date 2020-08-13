@@ -23,8 +23,7 @@ const SignUp = ({ history }) => {
     }, [history]);
 
     return(
-        <div className="App">
-            <Nav />
+        <div>
 
             <MainHeader />
 

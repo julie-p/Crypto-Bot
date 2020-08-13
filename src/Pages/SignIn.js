@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { withRouter, Redirect } from "react-router";
 import app from '../base.js';
 import { AuthContext } from "../Auth.js";
@@ -33,9 +33,8 @@ const SignIn = ({ history }) => {
     };
 
     return(
-        <div className="App">
-            <Nav />
-
+        <div >
+            
             <MainHeader />
 
             <form 

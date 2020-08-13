@@ -67,10 +67,8 @@ function List(props) {
     });
 
     return (
-        <div className="App">
-
-            <Nav />
-
+        <div>
+            
             <MainHeader />
 
             {props.loading ?

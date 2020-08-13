@@ -17,6 +17,60 @@
   color: #fff;
 }
 
+/* Light mode */
+.light-mode {
+  background-color: #fff;
+  color: #000;
+}
+
+.light-mode .btn-toggle {
+  background-color: #fff;
+  border: none;
+  color: #F1642B;
+}
+
+.light-mode .input-signin {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  color: #000;
+}
+
+.light-mode .input-signin:focus {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  color: #000;
+}
+
+.light-mode ::placeholder {
+  color: #000;
+}
+
+.light-mode .login-container h6 {
+  color: #000;
+}
+
+.light-mode .list-group-item {
+  background-color: #fff;
+}
+
+.light-mode .btn-logout {
+  background-color: #fff;
+  color: #000;
+}
+
+.light-mode .footer-link {
+  background-color: #fff;
+  color: #000;
+}
+
+.light-mode .active-link {
+  color: #F1642B;
+}
+
+.light-mode .chart-data {
+  background-color: #fff;
+}
+
 /* Reusables */
 h1 {
   font-size: 20px;
@@ -83,6 +137,12 @@ input:focus {
 }
 
 .btn:hover {
+  color: #fff;
+}
+
+.btn-toggle {
+  background-color: #343669;
+  border: none;
   color: #fff;
 }
 
