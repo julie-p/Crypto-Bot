@@ -13,6 +13,8 @@
   0 41.8px 33.4px rgba(0, 0, 0, 0.05);
   border: 1px solid #ccc;
   border-radius: 0 40px 0 40px;
+  background: #343669;
+  color: #fff;
 }
 
 /* Reusables */
@@ -83,6 +85,7 @@ input:focus {
 .btn:hover {
   color: #fff;
 }
+
 
 /* App media queries */
 @media (max-width: 1366px) {

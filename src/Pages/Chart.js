@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Nav from '../Components/Nav';
-import MainHeader from '../Components/MainHeader';
+import MainHeader from '../Components/Header';
 import Loader from '../Components/Loader';
 import Footer from '../Components/Footer';
 import { Pie } from 'react-chartjs-2';
@@ -29,7 +29,7 @@ function Chart(props) {
                         ],
                         borderWidth: 1
                     }
-                ]
+                ],
             })
         };
 
@@ -53,7 +53,7 @@ function Chart(props) {
                         <NumberFormat value={props.total} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
                     </p>
                 </div>
-                <Pie data={chartData} />
+                <Pie data={chartData} style={{color: '#fff'}} />
             </div>
             :
             <Loader />

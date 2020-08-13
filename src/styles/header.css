@@ -12,14 +12,15 @@
   }
 
   .header-chart {
-    background: url('../images/background-img.jpg') no-repeat;
-    background-position: center; 
+    background: url('../images/bg-img-2.PNG') no-repeat;
+    background-position: top; 
     background-size: cover;
+    color: #fff;
   }
 
   .header-list {
-    background: url('../images/img-bg.jpg') no-repeat;
-    background-position: center; 
+    background: url('../images/bg-img-3.PNG') no-repeat;
+    background-position: top; 
     background-size: cover;
   }
 
@@ -31,7 +32,7 @@
   }
 
   .date {
-    text-align: right;
-    margin-right: 20px;
+    text-align: left;
+    margin-left: 10px;
     font-weight: 500;
   }

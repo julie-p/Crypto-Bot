@@ -35,6 +35,8 @@
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+    border: none;
+    background-color: #343669;
   }
 
 /* Media queries */

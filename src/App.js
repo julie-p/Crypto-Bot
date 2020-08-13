@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import SignIn from './Pages/SignIn';
 import SignUp from './Pages/SignUp';
@@ -19,18 +19,19 @@ const store = createStore(combineReducers({data, total, loading}));
 function App() {
 
   return (
-    <AuthProvider>
-      <Provider store={store}>
-        <Router>
-          <Switch>
-            <Route path='/' exact component={SignIn}/>
-            <Route path='/signup' component={SignUp}/>
-            <PrivateRoute  path='/list' component={List}/>
-            <PrivateRoute  path='/chart' component={Chart}/>
-          </Switch>
-        </Router>
-      </Provider>
-    </AuthProvider>
+      <AuthProvider>
+        <Provider store={store}>
+          <Router>
+            <Switch>
+              <Route path='/' exact component={SignIn}/>
+              <Route path='/signup' component={SignUp}/>
+              <PrivateRoute  path='/list' component={List}/>
+              <PrivateRoute  path='/chart' component={Chart}/>
+            </Switch>
+          </Router>
+        </Provider>
+      </AuthProvider>
+    
   )
 };
 

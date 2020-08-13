@@ -11,14 +11,10 @@ function Footer() {
 
     let location = useLocation();
     
-    let activeLoginPage = "footer-link"
     let activeMainPage = "footer-link";
     let activeChartPage = "footer-link";
     
     switch (location.pathname) {
-        case '/' : 
-            activeLoginPage += " active-link";
-            break;
         case '/list' :
             activeMainPage += " active-link";
             break;
@@ -32,7 +28,7 @@ function Footer() {
     return (
         <div className="footer-menu">
             <div className="footer-link-col">
-                <button className={activeLoginPage} onClick={() => app.auth().signOut()}>
+                <button className="btn-logout" onClick={() => app.auth().signOut()}>
                     <FontAwesomeIcon icon={faPowerOff} className="footer-icon" />
                 </button>
                 <Link to="/list" className={activeMainPage}>

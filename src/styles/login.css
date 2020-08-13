@@ -17,17 +17,28 @@
   }
 
   .input-signin {
-    background-color:#fff;
     border: none;
-    border-bottom: 1px solid #D0CECE;
     padding: 10px 15px;
     margin-bottom: 20px;
     font-weight: 300;
     font-size: 16px;
+    background-color: #343669;
+    border-bottom: 1px solid #797eef;
+    color: #fff;
+  }
+
+  .input-signin:focus {
+    background-color: #343669;
+    border-bottom: 1px solid #797eef;
+    color: #fff;
+  }
+
+  ::placeholder {
+    color: #fff;
   }
 
   .login-container h6 {
-    color: #000;
+    color: #fff;
     font-weight: 300;
     margin: 15px 0 8px 0;
   }

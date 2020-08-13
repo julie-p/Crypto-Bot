@@ -10,6 +10,10 @@ function MainHeader() {
     let header = "header";
     
     switch (location.pathname) {
+        case '/' :
+            header += " header-login";
+        case '/signup' :
+            header += " header-login";
         case '/list' :
             header += " header-list";
         case '/chart' :
@@ -23,8 +27,8 @@ function MainHeader() {
         <div className={header}>
             <Clock />
             <div className="button-group">
-                <button className="btn buy-btn">Buy Now</button>
-                <button className="btn sale-btn">Sell Now</button>
+                {/* <button className="btn buy-btn">Buy Now</button>
+                <button className="btn sale-btn">Sell Now</button> */}
             </div>
         </div>
     )

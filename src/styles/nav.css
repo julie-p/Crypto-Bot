@@ -2,7 +2,7 @@
   .nav-title {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     padding-top: 10px;
     font-size: 15px;
   }
@@ -17,3 +17,13 @@
     font-size: 20px;
     color: #F1642B;
   }
+
+  .btn-toggle {
+    border: none;
+  }
+  
+  .btn-toggle:focus {
+    border: none;
+    outline: none;
+  }
+  
