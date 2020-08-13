@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import app from '../base.js';
 import '../styles/login.css';
 import Nav from '../Components/Nav';
-import MainHeader from '../Components/Header';
+import Header from '../Components/Header';
 import InputLogin from '../Components/InputLogin';
 import { Link } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ const SignUp = ({ history }) => {
     return(
         <div>
 
-            <MainHeader />
+            <Header />
 
             <form 
                 className="login-container"

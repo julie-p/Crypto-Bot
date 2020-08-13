@@ -39,7 +39,8 @@
 
   .login-container h6 {
     color: #fff;
-    font-weight: 300;
+    font-weight: 400;
+    letter-spacing: 1px;
     margin: 15px 0 8px 0;
   }
 

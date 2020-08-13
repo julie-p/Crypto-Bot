@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/list.css';
 import data from '../data';
 import Nav from '../Components/Nav';
-import MainHeader from '../Components/Header';
+import Header from '../Components/Header';
 import Loader from '../Components/Loader';
 import Footer from '../Components/Footer';
 import { ListGroup, ListGroupItem } from 'reactstrap';
@@ -68,8 +68,8 @@ function List(props) {
 
     return (
         <div>
-            
-            <MainHeader />
+
+            <Header />
 
             {props.loading ?
             <ListGroup className="overview">
