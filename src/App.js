@@ -27,8 +27,6 @@ function App() {
     localStorage.setItem("light", JSON.stringify(lightMode));
   }, [lightMode]);
 
-  console.log(lightMode)
-
   function getInitialMode() {
     const isReturningUser = "light" in localStorage;
     const savedMode = JSON.parse(localStorage.getItem("light"));
