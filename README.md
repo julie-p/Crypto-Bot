@@ -11,7 +11,7 @@
 
 Cryptocurrency portfolio using CryptoCompare API https://min-api.cryptocompare.com/documentation with conversion of each cryptocurrency into euros, total amount of the portfolio, percentage of each currency in the portfolio and display with a chart pie.
 
-![CryptoBot signin page screenshot](/public/capture-login.JPG?raw=true)
+![CryptoBot signin page screenshot](/public/capture-login.PNG?raw=true)
 
 ## Technologies
 
