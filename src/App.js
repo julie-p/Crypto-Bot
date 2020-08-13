@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { AuthProvider } from "./Auth";
+import PrivateRoute from './PrivateRoute';
+
 import SignIn from './Pages/SignIn';
 import SignUp from './Pages/SignUp';
 import List from './Pages/List';
 import Chart from './Pages/Chart';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { AuthProvider } from "./Auth";
-import PrivateRoute from './PrivateRoute';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRobot, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 

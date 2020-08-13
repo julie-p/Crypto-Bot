@@ -3,7 +3,7 @@ import '../styles/nav.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRobot, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
-function Nav(props) {
+function Nav() {
     
     const [ darkMode, setDarkMode ] = useState(false);
 
