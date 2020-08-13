@@ -38,3 +38,7 @@
     background-color: #343669;
     color: #fff;
   }
+
+  .btn-logout:focus {
+    outline: none;
+  }
