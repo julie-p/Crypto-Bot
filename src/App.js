@@ -62,9 +62,9 @@ function App() {
                 className="btn-toggle" 
                 onClick={() => setDarkMode(prevMode => !prevMode)}>
                 {darkMode ?
-                <FontAwesomeIcon icon={faSun} className="logo-sun" />
+                <FontAwesomeIcon icon={faMoon} />
                 :
-                <FontAwesomeIcon icon={faMoon} className="logo-moon" />
+                <FontAwesomeIcon icon={faSun} />
                 }   
             </button>
         </div>
