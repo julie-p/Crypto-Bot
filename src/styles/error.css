@@ -1,0 +1,29 @@
+.error {
+    background: url('../images/8554-404.gif') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.error-main {
+    padding: 100px 0 100px 0;
+    text-align: center;
+}
+
+.btn-error {
+    width: 100%;
+    border: none;
+    background-color: #ffce82;
+    color: #fff;
+    margin-top: 30px;
+    font-weight: 600;
+}
+
+.link-back {
+    color: #ffffff;
+    font-style: normal;
+    font-size: 16px;
+}
+
+.link-back:hover {
+    color: #fff;
+}

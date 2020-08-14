@@ -8,6 +8,7 @@ import SignIn from './Pages/SignIn';
 import SignUp from './Pages/SignUp';
 import List from './Pages/List';
 import Chart from './Pages/Chart';
+import Error from './Pages/Error';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRobot, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
@@ -77,6 +78,7 @@ function App() {
                 <Route path='/signup' component={SignUp}/>
                 <PrivateRoute  path='/list' component={List}/>
                 <PrivateRoute  path='/chart' component={Chart}/>
+                <Route component={Error}></Route>
               </Switch>
             </Router>
           </Provider>

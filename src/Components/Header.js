@@ -27,8 +27,6 @@ function MainHeader() {
         <div className={header}>
             <Clock />
             <div className="button-group">
-                {/* <button className="btn buy-btn">Buy Now</button>
-                <button className="btn sale-btn">Sell Now</button> */}
             </div>
         </div>
     )
