@@ -4,21 +4,34 @@ function InputLogin() {
 
     return (
         <div className="login-container input">
-            <input 
-                className="input-signin"
-                name="email"
-                type="email" 
-                placeholder="Email" 
-            />
 
-            <input 
-                className="input-signin"
-                name="password"
-                type="password"
-                placeholder="Password" 
-            />
+            <div>
+                <input 
+                    className="input-signin"
+                    type="email" 
+                    name="email"
+                    autoComplete="off"
+                    required
+                /> 
+                <label for="email" className="label-name">
+                    <span className="content-name">Email</span>
+                </label>
+            </div>
+
+            <div>
+                <input 
+                    className="input-signin"
+                    type="password"
+                    name="password"
+                    required
+                />
+                <label for="password" className="label-name">
+                    <span className="content-name">Password</span>
+                </label>
+            </div>
 
             <button className="btn btn-signin" type="submit">Go !</button>
+
         </div>
     )
 };

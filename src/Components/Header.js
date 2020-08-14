@@ -12,15 +12,19 @@ function MainHeader() {
     switch (location.pathname) {
         case '/' :
             header += " header-login";
+            break;
         case '/signup' :
             header += " header-login";
+            break;
         case '/list' :
             header += " header-list";
+            break;
         case '/chart' :
             header += " header-chart";
             break;
         default :
             header = "header";
+            break;
     }; 
 
     return (
