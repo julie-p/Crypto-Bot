@@ -3,7 +3,6 @@ import { withRouter, Redirect } from "react-router";
 import app from '../base.js';
 import { AuthContext } from "../Auth.js";
 import '../styles/login.css';
-import Nav from '../Components/Nav';
 import Header from '../Components/Header';
 import InputLogin from '../Components/InputLogin';
 import { Link } from 'react-router-dom';

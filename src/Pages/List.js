@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/list.css';
 import data from '../data';
-import Nav from '../Components/Nav';
 import Header from '../Components/Header';
 import Loader from '../Components/Loader';
 import Footer from '../Components/Footer';
