@@ -22,6 +22,7 @@
     background: url('../images/bg-img-3.PNG') no-repeat;
     background-position: top; 
     background-size: cover;
+    color: #fff;
   }
 
   .header-login {
