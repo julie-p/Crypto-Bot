@@ -8,7 +8,6 @@ function InputLogin() {
             <div>
                 <input 
                     className="input-signin"
-                    type="email" 
                     name="email"
                     autoComplete="off"
                     required
