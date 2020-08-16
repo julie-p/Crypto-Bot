@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/list.css';
-import data from '../data';
+import List from '../Components/List';
 import Header from '../Components/Header';
 import Loader from '../Components/Loader';
 import Footer from '../Components/Footer';
-import { ListGroup, ListGroupItem } from 'reactstrap';
-import NumberFormat from 'react-number-format';
+import data from '../data';
 
 import { connect } from 'react-redux';
 
-function List(props) {
+function Wallet(props) {
 
     const [ rate, setRate ] = useState({});
     const [ convertedAmounts, setConvertedAmounts ] = useState({});
@@ -33,7 +31,7 @@ function List(props) {
                         convertedAmounts[asset.symbol] = asset.amount * rate[asset.symbol]['EUR'];
                     }
                 });
-                setConvertedAmounts(convertedAmounts);
+                props.convertedAmounts(convertedAmounts);
 
                 //get total amount wallet
                 totalConvertedAmount = Object.keys(convertedAmounts).reduce((sum, key) => sum + (convertedAmounts[key]), 0);//Part de la valeur initiale 0
@@ -53,34 +51,13 @@ function List(props) {
         setInterval(loadData, 10000);
     }, []);
 
-    const wallet = data.assets.map((asset, key) => {
-        return  <ListGroupItem key={"wallet_" + asset.symbol + "_" + key} className="list-group-item">
-                    <img src={asset.img} className="logo-img" alt="Cryptocurrency logo"></img>
-                    <p>{asset.name}</p>
-                    <p>{props.data[asset.symbol]}%</p>
-                    <p>{asset.amount} {asset.symbol}</p>
-                    <span>
-                        <NumberFormat value={convertedAmounts[asset.symbol]} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
-                    </span>
-                </ListGroupItem>
-    });
-
     return (
         <div>
 
             <Header />
 
             {props.loading ?
-            <ListGroup className="overview">
-                <h4>Details</h4>
-                <div className="text-group">
-                    <h3>Your Wallet</h3>
-                    <p>
-                        <NumberFormat value={props.total} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
-                    </p>
-                </div>
-                {wallet}
-            </ListGroup>
+            <List />
             :
             <Loader />
             }
@@ -101,6 +78,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+        convertedAmounts: function(amount) {
+            dispatch({type: 'convertedAmounts', amount: amount})
+        },
         addData: function(data) {
             dispatch({type: 'addData', data: data})
         },
@@ -116,4 +96,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
     mapStateToProps, 
     mapDispatchToProps
-)(List);
+)(Wallet);

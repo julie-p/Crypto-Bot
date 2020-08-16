@@ -31,7 +31,7 @@ function Footer() {
                 <button className="btn-logout" onClick={() => app.auth().signOut()}>
                     <FontAwesomeIcon icon={faPowerOff} className="footer-icon" />
                 </button>
-                <Link to="/list" className={activeMainPage}>
+                <Link to="/wallet" className={activeMainPage}>
                     <FontAwesomeIcon icon={faList} className="footer-icon" />
                 </Link>
                 <Link to="/chart" className={activeChartPage}>

@@ -15,7 +15,7 @@ const SignUp = ({ history }) => {
             await app
                 .auth()
                 .createUserWithEmailAndPassword(email.value, password.value);
-            history.push('/list');
+            history.push('/wallet');
         } catch (error) {
             alert(error);
         }

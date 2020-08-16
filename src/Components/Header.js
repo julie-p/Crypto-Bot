@@ -16,7 +16,7 @@ function MainHeader() {
         case '/signup' :
             header += " header-login";
             break;
-        case '/list' :
+        case '/wallet' :
             header += " header-list";
             break;
         case '/chart' :
