@@ -27,17 +27,21 @@ function Footer() {
 
     return (
         <div className="footer-menu">
+
             <div className="footer-link-col">
                 <button className="btn-logout" onClick={() => app.auth().signOut()}>
                     <FontAwesomeIcon icon={faPowerOff} className="footer-icon" />
                 </button>
+
                 <Link to="/wallet" className={activeMainPage}>
                     <FontAwesomeIcon icon={faList} className="footer-icon" />
                 </Link>
+                
                 <Link to="/chart" className={activeChartPage}>
                     <FontAwesomeIcon icon={faChartPie} className="footer-icon" />
                 </Link>
             </div>
+
         </div>
     )
 };

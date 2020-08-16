@@ -12,7 +12,7 @@ function Clock() {
         };
 
         updateTime();
-        setInterval(updateTime, 1000); //Update l'heure toutes les secondes 
+        setInterval(updateTime, 1000);
     }, []);
 
     return (

@@ -52,7 +52,6 @@ function Chart(props) {
 
 function mapStateToProps(state) {
     return {
-        total: state.total, 
         percentage: state.percentage,
         loading: state.loading
     }
