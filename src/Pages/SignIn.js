@@ -31,7 +31,7 @@ const SignIn = ({ history }) => {
         return <Redirect to="/wallet" />;
     };
 
-    return(
+    return (
         <div >
             
             <Header />
@@ -49,8 +49,6 @@ const SignIn = ({ history }) => {
                     <Link to="/signup" className="link link-underline">Create your account</Link>
                 </div>   
             </form>
-
-            
 
         </div>
     )

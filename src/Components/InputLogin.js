@@ -25,7 +25,7 @@ function InputLogin() {
                 <div className="password-icon">
                     <FontAwesomeIcon 
                         icon={passwordShow ? faEyeSlash : faEye} 
-                        onClick={() => setPasswordShow(passwordShow => ! passwordShow)} />
+                        onClick={() => setPasswordShow(passwordShow => !passwordShow)} />
                 </div>
                 <input 
                     className="input-signin"

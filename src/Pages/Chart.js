@@ -1,20 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Header from '../Components/Header';
 import Loader from '../Components/Loader';
+import DisplayChart from '../Components/DisplayChart';
 import Footer from '../Components/Footer';
-import { Pie } from 'react-chartjs-2';
-import NumberFormat from 'react-number-format';
 
 import { connect } from 'react-redux';
 
 function Chart(props) {
-    
-    const [ chartData, setChartData ] = useState({});
 
     useEffect(() => {
         const chart = () => {
             let data = Object.values(props.percentage);
-            setChartData({
+            props.chartData({
                 labels: ["Bitcoin", "Ethereum", "Dash", "BAT", 'USD Coin'],
                 datasets: [
                     {
@@ -42,18 +39,7 @@ function Chart(props) {
             <Header />
             
             {props.loading ?
-            <div className="overview">
-                <h4>Overview</h4>
-                <div className="text-group">
-                    <h3>Your Wallet</h3>
-                    <p>
-                        <NumberFormat value={props.total} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
-                    </p>
-                </div>
-                <div className="chart-data">
-                <Pie data={chartData} />
-                </div>
-            </div>
+            <DisplayChart />
             :
             <Loader />
             }
@@ -72,7 +58,15 @@ function mapStateToProps(state) {
     }
 };
 
+function mapDispatchToProps(dispatch) {
+    return {
+        chartData: function(chart) {
+            dispatch({type: 'chartData', chart: chart})
+        }
+    }
+};
+
 export default connect(
     mapStateToProps,
-    null
-  )(Chart);
+    mapDispatchToProps
+)(Chart);

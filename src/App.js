@@ -16,9 +16,10 @@ import amount from './reducers/amount.reducer';
 import total from './reducers/total.reducer';
 import percentage from './reducers/percentage.reducer';
 import loading from './reducers/loader.reducer';
+import chart from './reducers/chart.reducer';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
-const store = createStore(combineReducers({amount, total, percentage, loading}));
+const store = createStore(combineReducers({amount, total, percentage, loading, chart}));
 
 function App() {
 

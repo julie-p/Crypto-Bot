@@ -21,7 +21,7 @@ const SignUp = ({ history }) => {
         }
     }, [history]);
 
-    return(
+    return (
         <div>
 
             <Header />
