@@ -13,12 +13,12 @@ import { AuthProvider } from "./Auth";
 import PrivateRoute from './PrivateRoute';
 
 import amount from './reducers/amount.reducer';
-import data from './reducers/data.reducer';
 import total from './reducers/total.reducer';
+import percentage from './reducers/percentage.reducer';
 import loading from './reducers/loader.reducer';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
-const store = createStore(combineReducers({amount, data, total, loading}));
+const store = createStore(combineReducers({amount, total, percentage, loading}));
 
 function App() {
 

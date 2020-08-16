@@ -12,7 +12,7 @@ function List(props) {
         return  <ListGroupItem key={"wallet_" + asset.symbol + "_" + key} className="list-group-item">
                     <img src={asset.img} className="logo-img" alt="Cryptocurrency logo"></img>
                     <p>{asset.name}</p>
-                    <p>{props.data[asset.symbol]}%</p>
+                    <p>{props.percentage[asset.symbol]}%</p>
                     <p>{asset.amount} {asset.symbol}</p>
                     <span>
                         <NumberFormat value={props.amount[asset.symbol]} displayType={'text'} decimalScale={2} thousandSeparator={true} suffix={'€'} />
@@ -39,10 +39,10 @@ function List(props) {
 };
 
 function mapStateToProps(state) {
-    return {
-        data: state.data, 
-        total: state.total, 
-        amount: state.amount
+    return { 
+        amount: state.amount,
+        total: state.total,
+        percentage: state.percentage, 
     }
 };
 

@@ -41,7 +41,7 @@ function Wallet(props) {
                 Object.keys(convertedAmounts).map((key, index) => {
                     percentageAmounts[key] = ((convertedAmounts[key] * 100) / totalConvertedAmount).toFixed(2); 
                 });
-                props.addData(percentageAmounts);
+                props.addPercentage(percentageAmounts);
  
                 props.isLoaded(true);
             })
@@ -79,11 +79,11 @@ function mapDispatchToProps(dispatch) {
         convertedAmounts: function(amount) {
             dispatch({type: 'convertedAmounts', amount: amount})
         },
-        addData: function(data) {
-            dispatch({type: 'addData', data: data})
-        },
         addTotal: function(total) {
             dispatch({type: 'addTotal', total: total})
+        },
+        addPercentage: function(percentage) {
+            dispatch({type: 'addPercentage', percentage: percentage})
         },
         isLoaded: function(loading) {
             dispatch({type: 'isLoaded', loading: loading})

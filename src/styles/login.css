@@ -71,6 +71,7 @@
     cursor: pointer;
     float: right;
     top: 31px;
+    margin-right: 10px;
   }
 
   .login-container h6 {

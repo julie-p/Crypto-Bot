@@ -13,7 +13,7 @@ function Chart(props) {
 
     useEffect(() => {
         const chart = () => {
-            let data = Object.values(props.data);
+            let data = Object.values(props.percentage);
             setChartData({
                 labels: ["Bitcoin", "Ethereum", "Dash", "BAT", 'USD Coin'],
                 datasets: [
@@ -66,8 +66,8 @@ function Chart(props) {
 
 function mapStateToProps(state) {
     return {
-        data: state.data, 
         total: state.total, 
+        percentage: state.percentage,
         loading: state.loading
     }
 };
