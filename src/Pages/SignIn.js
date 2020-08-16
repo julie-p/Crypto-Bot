@@ -45,7 +45,9 @@ const SignIn = ({ history }) => {
                 <InputLogin />
                 
                 <h6>First time ?</h6>
-                <Link to="/signup">Create your account</Link>
+                <div>
+                    <Link to="/signup" className="link link-underline">Create your account</Link>
+                </div>   
             </form>
 
             
