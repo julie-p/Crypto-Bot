@@ -42,7 +42,6 @@ function mapStateToProps(state) {
     return {
         data: state.data, 
         total: state.total, 
-        loading: state.loading,
         amount: state.amount
     }
 };
