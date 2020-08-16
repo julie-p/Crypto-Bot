@@ -31,6 +31,7 @@ function InputLogin() {
                     className="input-signin"
                     type={passwordShow ? "text" : "password"}
                     name="password"
+                    autoComplete="off"
                     required
                 />
                 <label for="password" className="label-name">
