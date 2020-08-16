@@ -65,6 +65,14 @@
     font-weight: 700;
   }
 
+  .password-icon {
+    font-size: 12px;
+    opacity: .6;
+    cursor: pointer;
+    float: right;
+    top: 31px;
+  }
+
   .login-container h6 {
     color: #fff;
     font-weight: 400;

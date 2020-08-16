@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import List from '../Components/List';
+import data from '../data';
 import Header from '../Components/Header';
+import List from '../Components/List';
 import Loader from '../Components/Loader';
 import Footer from '../Components/Footer';
-import data from '../data';
 
 import { connect } from 'react-redux';
 

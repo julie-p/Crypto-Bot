@@ -1,14 +1,14 @@
 import React, { useCallback, useContext } from 'react';
 import '../styles/login.css';
+import Header from '../Components/Header';
+import InputLogin from '../Components/InputLogin';
 import { withRouter, Redirect } from "react-router";
 import { Link } from 'react-router-dom';
 import { AuthContext } from "../Auth.js";
 import app from '../base.js';
-import Header from '../Components/Header';
-import InputLogin from '../Components/InputLogin';
 
 const SignIn = ({ history }) => {
-
+    
     const handleLogin = useCallback(
         async event => {
             event.preventDefault();

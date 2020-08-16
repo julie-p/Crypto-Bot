@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { faEye,faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function InputLogin() {
+
+    const [ passwordShow, setPasswordShow ] = useState(false);
 
     return (
         <div className="login-container input">
@@ -18,14 +22,21 @@ function InputLogin() {
             </div>
 
             <div>
+                <div className="password-icon">
+                    <FontAwesomeIcon 
+                        icon={passwordShow ? faEyeSlash : faEye} 
+                        onClick={() => setPasswordShow(passwordShow => ! passwordShow)} />
+                </div>
                 <input 
                     className="input-signin"
-                    type="password"
+                    type={passwordShow ? "text" : "password"}
                     name="password"
                     required
                 />
                 <label for="password" className="label-name">
-                    <span className="content-name">Password</span>
+                    <span className="content-name">
+                        Password
+                    </span>
                 </label>
             </div>
 

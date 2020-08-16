@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { AuthProvider } from "./Auth";
-import PrivateRoute from './PrivateRoute';
-
 import SignIn from './Pages/SignIn';
 import SignUp from './Pages/SignUp';
 import Wallet from './Pages/Wallet';
@@ -12,13 +8,16 @@ import Error from './Pages/Error';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRobot, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { AuthProvider } from "./Auth";
+import PrivateRoute from './PrivateRoute';
+
 import amount from './reducers/amount.reducer';
 import data from './reducers/data.reducer';
 import total from './reducers/total.reducer';
 import loading from './reducers/loader.reducer';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
-
 const store = createStore(combineReducers({amount, data, total, loading}));
 
 function App() {

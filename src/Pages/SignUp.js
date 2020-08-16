@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import { withRouter } from 'react-router';
-import app from '../base.js';
 import '../styles/login.css';
 import Header from '../Components/Header';
 import InputLogin from '../Components/InputLogin';
+import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
+import app from '../base.js';
 
 const SignUp = ({ history }) => {
 
